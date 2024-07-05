@@ -1,0 +1,198 @@
+1) LOOPS
+
+do {
+    Deyim;
+} while(İfade);
+
+2) time.h kutuphanesi:
+
+srand(time(NULL));
+sayi=rand()%6;  //sayi 0,1,2,3,4,5 degerlerini alir. ifade +1 ile toplanırsa "zar" formasyonu.
+	
+3) math.h kütüphanesii: (esasen double deger alir ve dondururler)
+
+sqrt->karekök
+fabs->mutlak değer
+ceil->yukarı yuvarla
+floor->aşağı yuvarla
+pow->üs alma
+
+4) dizilerde bubble sort:
+
+tmp=x
+x=y
+y=tmp
+
+5) POINTERS
+
+5.1) Gosterim
+
+    int sayi=5;
+    int *p1;
+    p1=&sayi;
+    int sayi2=*p1;
+    int sayi3=p1;
+    int sayi4=&p1;
+    printf("%d\n", p1); // p1'in tuttuğu adresi yazdırır.
+    printf("%d\n", &p1); // p1'in adresini yazdırır.
+    printf("%d\n", *p1); // p1'in tuttuğu adresteki değeri yazdırır.
+    printf("%p\n", p1); // p1'in tuttuğu adresi hexadecimal olarak yazdırır.
+    printf("%d\n", sayi); // sayi'nin değerini ve p1'in tuttuğu adresteki değeri yazdırır.
+    printf("%d\n", &sayi); // sayı'nin adresini ve p1'in tuttuğu adresi yazdırır.
+    printf("%d\n", sayi2); // sayi2'nin değerini ve p1'in tuttuğu adresteki değeri yazdırır.
+    printf("%d\n", sayi3); // sayi3'ün değerini ve p1'in tuttuğu adresi yazdirir.
+    printf("%d\n", sayi4); // sayi4'ün değerini ve p1'in adresini yazdırır.
+	
+5.2) Diziler ve Pointerlar
+
+	int dizi[]= {1,2,3,4};
+	int *ptr;
+	ptr=dizi;
+	ptr=&dizi[0]; //ikisi de aynıdır.dizinin ilk elemanını göstericiye atar. bir dizi aynı zamanda pointer'dır.
+	printf("%d", *(ptr+1));
+	printf("%d", dizi[1]); // ikisi de dizinin 2.elemanını yazdırır.
+	
+5.3) Pointer ve Fonksiyon
+
+dizi ve karakter dizileri pointer alan bir fonksiyona sadece isimleriyle gönderilirler, çünkü her dizi bir pointer dır.
+pointer olmayan değişkenler pointer alan bir fonksiyona adresleriyle, yani & operatörüyle gönderilirler.
+
+5.4) Dizilerde İşlemler
+
+memcpy(a, b, size) -> b'yi a'ya kopyalar. size dizinin bellekteki boyutu.
+memcmp(a, b, size) -> dizi kıyaslama
+memset -> diziye sabit bir değer atar. ör: memset(dizi_1, 0, sizeof(int)*5);	
+
+6) STRINGS
+
+6.1 GETS, PUTS, FGETS
+
+char s[100];
+printf("cumle girin: ");
+gets(s); 
+// fgets(cumle, 100, stdin); -> BU DA KULLANILABİLİR.
+// s[strlen(-1)]='\0'; -> sondaki \n yerine \0 ata
+printf("cumle: ");
+puts(s);
+
+6.2 STRING.H KÜTÜPHANESİ
+
+strlen->char sayısı /int döndürür
+strcpy(s2, s1) -> s1 stringini s2’ye kopyalar
+strcat(s2, s1) -> s1 stringini s2’nin sonuna ekler
+strcmp(string1, string2)==0 -> her iki karakter dizisi de birbirine eşittir.
+						<0  -> s1, s2 den alfabetik olarak önce gelir.
+						>0  -> s2, s1'den alfabetik olarak önce gelir.
+strrev->tersini
+strlwr->küçük
+strupr->büyük
+strchr(s, c) -> s içerisinde c karakterini arar. Bulundugu yeri tutan isaretçiyi döndürür. Yoksa NULL (0 adresi) pointer döndürür.
+strrchr -> son geçen yeri tutan pointer döndürür.
+strstr(s1, s2) -> s1 içerisinde s2 stringini arar. Bulundugu yeri tutan isaretçiyi döndürür. Yoksa NULL pointer döndüdür.
+strtok(s1, s2/c) -> s1'i, s2/c'ye göre parçalar.
+
+6.3 CTYPE.H KUTUPHANESİ -> fonksiyonlar char alır.
+
+isdigit->rakam mi?
+ispunct->noktalama isareti mi?
+isalpha->harf mi?
+isupper->buyuk mu?
+islower->kucuk mu?
+toupper->buyult
+tolower->kucult
+
+6.4 STDLIB.H KUTUPHANESİ ->string cevirme fonksiyonlarını içerir.
+
+atoi-> string->integer
+atol-> string->long
+atof-> string->double
+strtod(s, ptr) : s(string) -> double // Çevrilemeyen ilk karakterin adresini ptr isimli pointera atar.
+strtol(s, ptr) : s(string) -> double // Çevrilemeyen ilk karakterin adresini ptr isimli pointera atar.
+						
+7)GİRİŞ-ÇIKIŞ FONKSİYONLARI
+
+printf("%10d\n", a);   -> 
+printf("%10f\n", b);   -> soldan bosluk bırakarak 10 karaktere tamamlar.
+printf("%10s\n", c);   ->
+
+
+printf("%06d\n", a);   -> en sola sıfırlar yazarak 6 karaktere tamamlar.
+printf("%06d\n", b);   ->
+
+
+printf("%.4f\n", b); -> noktadan sonra 4 karakter yazdırır.
+
+
+printf("0:%s:\n", c); // Normal
+printf("1:%10s:\n", c); // 10 karakterlik alan saga dayali
+printf("2:%.3s:\n", c); // ilk 3 karakter
+printf("3:%-10s:\n", c); // 10 karakterlik alan sola dayali
+printf("4:%10.3s:\n", c); // 10 karakterlik alan ilk 3 karakter
+printf("5:%.3s:\n", c+2); // [2,5] arasi karakteri yazdir
+
+
+48->0 65->A 97->a
+
+8) STRUCTS
+
+struct'ın bileşenlerini tamamen atamadan yazdırılırsa, atanmayan değerlere 0 yazar. hiç atama yapılmazsa, rastgele değerler yazar.
+
+9) BELLEK İŞLEMLERİ
+
+int *A;
+A = (int*) malloc(10 * sizeof(int));  -> 10 elemanlık bir int dizisi tanımlandı.
+free(A) -> program sonlandırılmadan önce bellekten bosaltıldı.
+
+sonsuz dongude serbest birakmadan malloc fonksiyonunu kullanmak -> pc'yi kilitleyebilir.
+p_dizi = realloc(p_dizi, 100 * sizeof(char));  -> yeniden boyutlandırma
+
+
+10) DOSYA İŞLEMLERİ
+
+FILE *dosya
+dosya=fopen("test.txt", "w"); -> dosya açılır.
+
+----modlar----
+"r" ->okuma
+"w" ->yazma (dosyanın içeriğini silip baştan yazar, yoksa olusturur)
+“a” ->ekleme (dosya sonuna yazar, yoksa olusturur)
+“r+” ->okuma ve güncelleme (dosya yoksa açmaz, hata verir)
+“w+” ->yazma ve güncelleme (dosyanın içeriğini silip açar)
+“a+” ->ekleme ve güncelleme
+
+if (dosya == NULL) { // dosyaya erisilemiyorsa NULL olur
+printf("dosya acilamadi\n");
+exit(1);
+
+
+fclose(dosya);  -> dosya kapatılır.
+
+
+----fonksiyonlar----
+fgetc->dosyadan karakter okur -> fgetc(dosya)
+fgets->dosyadan string okur -> fgets(dizgi, 100, dosya)
+fscanf->dosyadan formatlı okuma -> fscanf(dosya, "%99s", dizgi); // max 99 harfli kelime oku
+fputs->fputs("satir 1\n", dosya);
+fprintf(dosya, "%06d %.3f\n", 15, 1.3); ->formatlı yazma
+
+yazma modunda fseek kullanilamaz. her zaman sona yazar.
+
+fputc->dosyaya karakter yazar ->fputc('a', dosya);
+
+
+
+fseek(dosya, 0, SEEK_END); ->dosyanin sonuna atla
+fseek(dosya, 0, SEEK_SET); ->dosya başına atlar
+fseek(dosya, len-2, SEEK_SET); ->sondan iki önceki karaktere atla
+ftell(dosya); -> göstergenin bulunduğu byte numarasını okur, long int (ld) döndürür
+
+
+fwrite -> fwrite(&ogr, sizeof(struct Ogrenci), 1, dosya);
+
+fread -> 
+size_t sayi = fread(&ogrenci, sizeof(struct Ogrenci), 1, dosya);
+if (sayi < 1)
+break;
+
+
+yazma (w) modunda dosya açılıp kapatılırsa, içeriği silinmiş olur.
